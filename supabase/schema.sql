@@ -92,17 +92,16 @@ DECLARE
     player3_id UUID;
 BEGIN
     -- サンプル選手の挿入
-    INSERT INTO players (id, user_id, name, team, number)
+    INSERT INTO players (user_id, name, team, number)
     VALUES 
-        (gen_random_uuid(), test_user_id, '山田 太郎', 'Aチーム', '10'),
-        (gen_random_uuid(), test_user_id, '佐藤 花子', 'Aチーム', '7'),
-        (gen_random_uuid(), test_user_id, '田中 次郎', 'Bチーム', '15')
-    RETURNING id INTO player1_id;
+        (test_user_id, '山田 太郎', 'Aチーム', '10'),
+        (test_user_id, '佐藤 花子', 'Aチーム', '7'),
+        (test_user_id, '田中 次郎', 'Bチーム', '15');
 
-    -- 最初の選手IDを取得
-    SELECT id INTO player1_id FROM players WHERE name = '山田 太郎' LIMIT 1;
-    SELECT id INTO player2_id FROM players WHERE name = '佐藤 花子' LIMIT 1;
-    SELECT id INTO player3_id FROM players WHERE name = '田中 次郎' LIMIT 1;
+    -- 挿入した選手のIDを取得
+    SELECT id INTO player1_id FROM players WHERE name = '山田 太郎' AND user_id = test_user_id LIMIT 1;
+    SELECT id INTO player2_id FROM players WHERE name = '佐藤 花子' AND user_id = test_user_id LIMIT 1;
+    SELECT id INTO player3_id FROM players WHERE name = '田中 次郎' AND user_id = test_user_id LIMIT 1;
 
     -- サンプルカルテの挿入
     INSERT INTO charts (user_id, date, player_id, status, subjective, objective, assessment, plan_text, treatments)
