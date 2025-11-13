@@ -12,6 +12,13 @@
 - **カルテ入力**: SOAP形式でのカルテ記録（スマートフォン対応）
 - **時系列閲覧**: 選手別のカルテ履歴を時系列で表示
 
+## 📚 ドキュメント
+
+- **[要求定義書](./docs/要求定義書.md)** - プロジェクトの背景、目的、MVP目標
+- **[要件定義書](./docs/要件定義書.md)** - システム構成、データモデル、画面設計
+- **[機能仕様書](./docs/機能仕様書.md)** - 画面別の詳細仕様、データ操作、バリデーション
+- **[デプロイガイド](./DEPLOYMENT.md)** - Supabase・Vercelへのデプロイ手順
+
 ## 🚀 技術スタック
 
 - **フロントエンド**: Next.js 15 (App Router) + TypeScript + Tailwind CSS
@@ -105,10 +112,15 @@ webapp/
 │       │   └── page.tsx      # カルテ新規入力
 │       └── [id]/
 │           └── page.tsx      # カルテ詳細・編集
+├── docs/
+│   ├── 要求定義書.md          # プロジェクト要求定義
+│   ├── 要件定義書.md          # システム要件定義
+│   └── 機能仕様書.md          # 機能詳細仕様
 ├── lib/
 │   └── supabase.ts           # Supabaseクライアント設定
 ├── supabase/
 │   └── schema.sql            # データベーススキーマ
+├── DEPLOYMENT.md             # デプロイガイド
 ├── package.json
 ├── tsconfig.json
 ├── tailwind.config.ts
